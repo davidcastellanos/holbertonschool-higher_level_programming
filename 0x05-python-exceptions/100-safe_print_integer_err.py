@@ -5,3 +5,11 @@ ret = False
     try:
         print("{:d}".format(value))
         ret = True
+except (ValueError, TypeError) as message:
+        tb.print_exception(Exception,
+                           Exception(message),
+                           None,
+                           limit=0,
+                           chain=False)
+    finally:
+        return ret
