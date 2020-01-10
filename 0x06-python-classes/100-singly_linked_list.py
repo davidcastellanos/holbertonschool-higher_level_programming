@@ -26,7 +26,7 @@ class Node:
         self.__next_node = value
 
 
-class SinglyLinkedList:
+class LinkedList:
     """Class to store singly linked list of Node objects"""
     def __init__(self):
         self.__head = None
@@ -57,6 +57,6 @@ class SinglyLinkedList:
         while head.next_node is not None:
             ret += format(head.data, 'd')
             ret += '\n'
-            head = head.next_node
+            head = head.node
         ret += format(head.data, 'd')
         return ret
