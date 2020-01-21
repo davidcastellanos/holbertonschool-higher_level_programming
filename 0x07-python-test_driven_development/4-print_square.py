@@ -1,18 +1,18 @@
 #!/usr/bin/python3
-"""Module containing function to print a square
-Should not be executed directly, but only imported as a module
+"""Task 3 - prints a square
+This is our function to be tested
 """
 
 
 def print_square(size):
-    """Function to print a square with sides `size`.
+    """Prints a square made with the char #
     Args:
-        size (int): Integral side length of square
+        size (int):: first parameter
     Returns:
-        None
+        Returns nothing
     Raises:
-        TypeError: If `size` is not an integer.
-        ValueError: If `size` is less than 0.
+        TypeError: size must be an integer
+        ValueError: size must be an integer
     """
     if type(size) is not int:
         raise TypeError('size must be an integer')
