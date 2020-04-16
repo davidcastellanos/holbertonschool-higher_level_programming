@@ -1,9 +1,5 @@
 #!/usr/bin/python3
-"""
-Get the 10 most recent commits from the repository specified on
-the command line ordered most recent to oldest in the
-format: `<sha>: <author name>`
-"""
+"""function that searches for a value"""
 from sys import argv
 from requests import get
 
