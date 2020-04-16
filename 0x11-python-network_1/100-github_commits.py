@@ -7,7 +7,6 @@ format: `<sha>: <author name>`
 from sys import argv
 from requests import get
 
-
 if __name__ == "__main__":
     usr = 'https://api.github.com/repos/' + argv[2] + '/' + argv[1] + '/commits'
     res = get(usr)
