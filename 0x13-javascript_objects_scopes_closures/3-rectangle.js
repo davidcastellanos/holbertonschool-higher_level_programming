@@ -1,4 +1,5 @@
 #!/usr/bin/node
+// Simple rectangle class
 module.exports = class Rectangle {
   constructor (w, h) {
     if (w > 0 && h > 0) {
@@ -7,7 +8,7 @@ module.exports = class Rectangle {
     }
   }
   print () {
-    for (let i = 0; i < this.height; i++) {
+    for (let y = 0; y < this.height; y++) {
       console.log('X'.repeat(this.width));
     }
   }
