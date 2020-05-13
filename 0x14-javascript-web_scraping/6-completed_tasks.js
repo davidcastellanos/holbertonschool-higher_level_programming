@@ -1,19 +1,19 @@
 #!/usr/bin/node
-const request = require('request');
-request.get(process.argv[2], (err, resp, body) => {
-  if (err) console.log(err);
-  else if (resp.statusCode === 200) {
-    let todos = JSON.parse(body);
-    let usersCompleted = {};
-    for (let todo of todos) {
-      if (todo.completed === true) {
-        if (todo.userId in usersCompleted) {
-          usersCompleted[todo.userId] += 1;
-        } else {
-          usersCompleted[todo.userId] = 1;
+// Computes the number of tasks completed by id
+require('request').get(process.argv[2], function (err, res, body) {
+  if (err) {
+    console.log(err);
+  } else {
+    let tasks = JSON.parse(body);
+    let res = {};
+    for (let i = 0; i < tasks.length; i++) {
+      if (tasks[i].completed) {
+        if (!(tasks[i].userId in res)) {
+          res[tasks[i].userId] = 0;
         }
+        res[tasks[i].userId] += 1;
       }
     }
-    console.log(usersCompleted);
+    console.log(res);
   }
 });
