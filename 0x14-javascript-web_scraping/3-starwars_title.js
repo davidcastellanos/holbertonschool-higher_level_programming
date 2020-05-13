@@ -1,9 +1,13 @@
 #!/usr/bin/node
-// prints the title of a SW movie where the eps # matches a given int
-require('request').get('http://swapi.co/api/films/' + process.argv[2] + '/', function (err, res, body) {
-  if (err) {
-    console.log(err);
+const request = require('request');
+const argv = process.argv;
+const url = 'https://swapi-api.hbtn.io/api/films/' + argv[2] + '/';
+
+request(url, function (error, response, body) {
+  if (error === null) {
+    const rbody = JSON.parse(body);
+    console.log(rbody.title);
   } else {
-    console.log(JSON.parse(body).title);
+    console.log(error);
   }
 });
