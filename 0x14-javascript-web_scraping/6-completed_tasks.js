@@ -1,19 +1,21 @@
 #!/usr/bin/node
-// Computes the number of tasks completed by id
-require('request').get(process.argv[2], function (err, res, body) {
-  if (err) {
-    console.log(err);
+const argv = process.argv;
+const url = argv[2];
+const request = require('request');
+request(url, function (error, response, body) {
+  if (error) {
+    console.log(error);
   } else {
-    let tasks = JSON.parse(body);
-    let res = {};
-    for (let i = 0; i < tasks.length; i++) {
-      if (tasks[i].completed) {
-        if (!(tasks[i].userId in res)) {
-          res[tasks[i].userId] = 0;
+    const rbody = JSON.parse(body);
+    const dict = {};
+    for (const i of rbody) {
+      if (i.completed === true) {
+        if (dict[i.userId] === undefined) {
+          dict[i.userId] = 0;
         }
-        res[tasks[i].userId] += 1;
+        dict[i.userId] += 1;
       }
     }
-    console.log(res);
+    console.log(dict);
   }
 });
